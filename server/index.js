@@ -3,8 +3,14 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from "cors"
 
+import postRoutes from './routes/posts.js'
+
 // Initalize App
 const app = express();
+
+// Connects to application
+// Every route in postRoutes is going to start with posts
+app.use('/posts', postRoutes)
 
 // Setup
 app.use(bodyParser.urlencoded({
@@ -22,4 +28,4 @@ mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: tru
     .then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
     .catch((error) => console.log(error.message));
 
-mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false); 
