@@ -1,7 +1,7 @@
 // All routes that include Posts
 
 import express from 'express'
-import {getPosts, createPost, updatePost} from "../controllers/posts.js"
+import {getPosts, getPost, createPost, updatePost, likePost, deletePost} from "../controllers/posts.js"
 
 const router = express.Router();
 
@@ -11,10 +11,10 @@ const router = express.Router();
 // is not reached by going to localhost:5000/, reached by going to http://localhost:5000/posts
 router.get('/', getPosts)
 router.post('/', createPost)
-// router.get('/:id', getPost);
+router.get('/:id', getPost);
 router.patch('/:id', updatePost);
-// router.delete('/:id', deletePost);
-// router.patch('/:id/likePost', likePost);
+router.delete('/:id', deletePost);
+router.patch('/:id/likePost', likePost);
 
 
 export default router
